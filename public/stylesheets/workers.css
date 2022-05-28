@@ -1,0 +1,53 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+    display: block;
+    text-align: center;
+}
+h1{
+    color: white;
+    font-size: 4rem;
+}
+#cont{
+    width: 100%;
+    height: 90%;
+    
+}
+.chooseWorker{
+    flex-direction: column;
+    width: 33%;
+    height: 80%;
+    border: 1px solid white;
+    position: relative;
+    text-align: center;
+    background: transparent;
+    border-radius: 25px;
+    border: none;
+    transition: .3s ease;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.chooseWorker:hover{
+    background: rgba(0,0,0,0.35);
+    transition: .3s ease;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+#plumber{
+    background-image: url(../images/p1.png);
+}
+#electrician{
+    background-image: url(../images/p2.png);
+}
+#gardener{
+    background-image: url(../images/p3.png);
+}
+
+
+

@@ -1,0 +1,135 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.electrician{
+    background-color: #ff4e00;
+    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+
+}
+.gardener{
+    background-color :#20bf55;
+background-image : linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
+}
+.plumber{
+    background-color: #36096d;
+    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+
+}
+h1{
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+}
+img{
+    display: block;
+    margin: auto;
+    width: 240px;
+    height: 240px;
+}
+#nav{
+    float: right;
+    display: block;
+    width: 30%;
+    height: 80%;
+    position: absolute;
+    bottom: -5%;
+    right: 3%;
+}
+#nav input,textarea{
+display: block;
+margin: auto;
+margin-top: 30px;
+padding: 20px;
+border-radius: 10px;
+border: none;
+width: 89%;
+background:rgba(0,0,0,0.3);
+transition: .3s ;
+color: white;
+font-size: 1.2rem;
+
+    
+}
+
+
+
+#nav input:hover{
+background: rgba(0, 0, 0, 0.1);
+transition: .3s ;
+
+
+}
+#nav input::-webkit-input-placeholder{
+color: white;
+text-align: center;
+font-size: 1.2rem;
+}
+.confirm{
+    position: absolute;
+    left: 40%;
+    width: 20%;
+    padding: 20px;
+    background:rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    bottom: 3%;
+    transition: .3s ease;
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+.confirm:hover{
+    background-color: green;
+    transition: .3s ease;
+}
+
+/*STYLOWANIE BUTTONOW*/
+.container {
+    margin: 10px;
+    
+}
+.container label{
+    cursor: pointer;
+    
+
+}
+.container label input{
+    display: none
+}
+.container label span{
+    position: relative;
+    display: inline-block;
+    background:rgba(0, 0, 0, 0.1);
+    padding: 18px 36px;
+    border-radius: 25px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    color: white;
+    transition: 0.5s;
+    user-select: none;
+    overflow: hidden;
+}
+.container label input:checked ~ span{
+    background: rgba(0, 0, 0, 0.4);
+}
+.logout{
+    position: relative;
+    display: inline-block;
+    background:rgba(0, 0, 0, 0.1);
+    padding: 18px 36px;
+    border-radius: 25px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    color: white;
+    transition: 0.5s;
+    user-select: none;
+    overflow: hidden;
+    border: none;
+    top: 2%;
+    left: 2%;
+}
+

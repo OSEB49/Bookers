@@ -1,0 +1,147 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.electrician{
+    background-color: #ff4e00;
+    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+
+}
+.gardener{
+    background-color :#20bf55;
+background-image : linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
+}
+.plumber{
+    background-color: #36096d;
+    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+
+}
+h1{
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+}
+img{
+    display: block;
+    margin: auto;
+    width: 240px;
+    height: 240px;
+}
+.popup{
+    width: 30%;
+    height: 40%;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.686);
+    position: absolute;
+    top: 2%;
+    text-align: center; 
+    background:rgba(0, 0, 0, 0.2);
+    
+    
+}
+#add{
+    left: 2%;
+}
+#edit{
+    right: 2%;
+}
+.popup p{
+    font-size: 2.5rem;
+    color: white;
+}
+.inputs
+{
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 60%;
+    background:rgba(0,0,0,0.3);
+    transition: .3s ;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    outline: none;
+
+    
+    
+}
+.inputs:hover{
+    background: rgba(0, 0, 0, 0.1);
+    transition: .3s ;
+    
+    
+}
+.inputs::-webkit-input-placeholder{
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin: auto;
+    width: 60%;
+    height: 50%;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    
+    
+}
+tr{
+    border: 1px solid rgba(255, 255, 255, 0.445);
+}
+.crudButton{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+
+}
+.delete{
+    background-color: rgba(255, 0, 0, 0.553);
+    transition: .5s ease;
+    color:white;
+}
+.delete:hover{
+    transition: .5s ease;
+    background-color: rgb(255, 0, 0);
+}
+.edit{
+    background-color: rgba(0, 191, 255, 0.501);
+    transition: .5s ease;
+    color:white;
+}
+.edit:hover{
+    transition: .5s ease;
+    background-color: rgba(27, 199, 230, 0.993);
+    
+}
+.hidden{
+    display: none;
+}
+.confirmBtn{
+    margin-top: 20px;
+    width: 40%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    background-color: #20bf555e;
+    transition: .5s ease;
+    color: white;
+}
+.confirmBtn:hover{
+    transition: .5s ease;
+    background-color: #20bf55;
+}
