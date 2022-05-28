@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  head  
+   link(rel="stylesheet", href="../stylesheets/books.css")
+  body.electrician 
+   
+    h1 Elektryk 
+    img(src="../images/p2.png")
+   
+    form(method="post")
+     each item in data
+      .container
+       label
+        input(type="checkbox" name="service" value=item._id)
+        span=item.nameOfService+' '+item.price+'zł'
+     #nav
+      input(type="text" name="name" placeholder="podaj imie")
+      input(type="email" name="email" placeholder="podaj email")
+      input(type="text"  name="address" placeholder="podaj adres")
+      textarea(name="information", cols="60", rows="10") 
+     input(type="submit" value='Potwierdz').confirm
+         
+       
+
+     

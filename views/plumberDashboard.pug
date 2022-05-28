@@ -1,0 +1,52 @@
+extends layout
+
+   
+block content
+   head
+    script(defer src="../javascripts/fetch.js") 
+    link(rel="stylesheet", href="../stylesheets/crud.css")
+ 
+
+   body.plumber
+    img(src='../images/p1.png')
+    h1 Hydraulik
+    form(method="post")#add.popup
+     p Dodaj Usługę
+     input(type='text' placeholder="Podaj nazwe uslugi" name="nameOfService").inputs
+     input(type="number" placeholder="Podaj cene uslugi" name="priceOfService").inputs
+     input(type="submit" name="add").confirmBtn
+    #edit.popup.hidden
+     p Edytuj Usługę
+     input(type='text' placeholder="Podaj nazwe uslugi" class="inputs" value id="editName")
+     input(type="number" placeholder="Podaj cene uslugi" class='inputs' value id="editPrice")
+     input(type="datetime-local" name="date")
+     button(id="editConfirm" data-person="plumber").confirmBtn Edytuj
+    
+    table.serviceTable
+      h1 Twoje uslugi
+      each service in services
+       tr 
+        td=service.nameOfService 
+        td=service.price+'zł'
+        td 
+         button(class='delete crudButton',  data-person='plumber' value=service._id) Usuń 
+        td 
+         button( class='crudButton edit', data-person='plumber' value=service._id) Edytuj 
+   
+
+
+    table.booksTable.dashboardTable
+     h1 Twoje zlecenia
+     each item in data
+      tr 
+       td='Imie: '+ item.username 
+       td=item.nameService 
+       td= item.email 
+       td='Adr: ' + item.address
+       td=item.date 
+       td=item.price+'zł'
+       td='Info' + item.info
+       td 
+        button(class='delete crudButton', data-person='books' value=item._id) Usuń 
+       td  
+        button( class='crudButton edit',  data-person='books' value=item._id) Edytuj 

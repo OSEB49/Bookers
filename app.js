@@ -4,10 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-//const bcrypt = require('bcrypt');
-//const passport = require('passport');
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
 //const flash = require('express-flash');
 const session = require('express-session');
+var mongoose = require('mongoose');
+
 //const MongoStore = require('connect-mongo') (session);
 
 
@@ -18,7 +21,7 @@ const session = require('express-session');
 
 
 var config = require('./config');
-var mongoose = require('mongoose');
+
 
 mongoose.connect(config.db, {useNewUrlParser:true});
 
@@ -40,14 +43,13 @@ var workersRouter = require('./routes/workersPage');
 var plumberRouter = require('./routes/plumberService');
 var electricianRouter = require('./routes/electricianServices');
 var gardenerRouter = require('./routes/gardenerService');
-//var adminRouter  = require('./routes/admin');
 var crudPlumberRouter  = require('./routes/crudPlumber');
 var crudElectricianRouter  = require('./routes/crudElectrician');
 var crudGardenerRouter  = require('./routes/crudGardener');
-//var crudBooksRouter  = require('./routes/crudBooks');
-//var plumberAccountRouter = require('./routes/plumberDashboard');
+var crudBooksRouter  = require('./routes/crudBooks');
+var plumberAccountRouter = require('./routes/plumberDashboard');
 var electricianAccountRouter = require('./routes/electricianDashboard');
-//var gardenerAccountRouter = require('./routes/gardenerDashboard');
+var gardenerAccountRouter = require('./routes/gardenerDashboard');
 
 
 
@@ -70,13 +72,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(flash());
 app.use(session({
   cookie: {maxAge:60000},
-  secret: 'cat',
+  secret: 'SECRET',
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
 }));
 
 
-//app.use(passport.initialize());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((req,res,next)=>{
+  console.log(req.session);
+  console.log(req.user);
+  next();
+})
 //app.use(passport.authenticate('session'));
 //app.use(methodOverride('_method'))
 app.use('/', indexRouter);
@@ -84,14 +92,13 @@ app.use('/workers', workersRouter);
 app.use('/plumber', plumberRouter);
 app.use('/electrician', electricianRouter);
 app.use('/gardener', gardenerRouter);
-//app.use('/admin', adminRouter);
 app.use('/admin/plumber', crudPlumberRouter);
 app.use('/admin/electrician', crudElectricianRouter);
 app.use('/admin/gardener', crudGardenerRouter);
-//app.use('/admin/books', crudBooksRouter);
-//app.use('/worker/plumber', plumberAccountRouter);
+app.use('/admin/books', crudBooksRouter);
+app.use('/worker/plumber', plumberAccountRouter);
 app.use('/worker/electrician', electricianAccountRouter);
-//app.use('/worker/gardener', gardenerAccountRouter)
+app.use('/worker/gardener', gardenerAccountRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

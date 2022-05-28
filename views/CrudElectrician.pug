@@ -1,0 +1,41 @@
+extends layout
+
+   
+block content
+   head
+    script(defer src="../javascripts/fetch.js") 
+    link(rel="stylesheet", href="../stylesheets/crud.css")
+ 
+
+   body.electrician
+    #nav  
+     form(method='post')#cont 
+      p Zmień kategorie CRUD
+      button(name="service" value="plumber").chooseWorker#plumber Hydraulik
+      button(name="service" value="electrician").chooseWorker#electrician Elektryk
+      button(name="service" value="gardener").chooseWorker#gardener Ogrodnik
+      button(name="service" value="books").chooseWorker#books Rezerwacje
+       
+    img(src='../images/p2.png')
+    h1 CRUD Elektryk
+    form(method="post")#add.popup
+     p Dodaj Usługę
+     input(type='text' placeholder="Podaj nazwe uslugi" name="nameOfService").inputs
+     input(type="number" placeholder="Podaj cene uslugi" name="priceOfService").inputs
+     input(type="submit" name="add").confirmBtn
+    #edit.popup.hidden
+     p Edytuj Usługę
+     input(type='text' placeholder="Podaj nazwe uslugi" class="inputs" value id="editName")
+     input(type="number" placeholder="Podaj cene uslugi" class='inputs' value id="editPrice")
+     button(id="editConfirm" data-person="electrician").confirmBtn Edytuj
+    
+
+    table
+     each item in data
+      tr 
+       td=item.nameOfService 
+       td=item.price +'zł' 
+       td 
+        button(class='delete crudButton', data-person="electrician" value=item._id) Usuń 
+       td 
+        button( class='crudButton edit', data-person="electrician" value=item._id) Edytuj 

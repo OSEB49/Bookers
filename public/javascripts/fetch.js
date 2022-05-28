@@ -10,12 +10,14 @@ let text,price;
 
 deleteButtons.forEach(btn=>{
     btn.addEventListener("click",(e)=>{
-        const element = btn.value;
-        deleteElement(element)
+        const element = e.currentTarget.value;
+        const person = e.currentTarget.dataset.person;
+        deleteElement(element,person);
+        
     })
 })
-function deleteElement(element){
-    fetch(`/admin/electrician/${element}`,{
+function deleteElement(element, person){
+    fetch(`/admin/${person}/${element}`,{
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -41,19 +43,33 @@ priceInput.addEventListener("keyup",(btn)=>{
 })
 
 
+
 editButtons.forEach(btn=>{
     btn.addEventListener('click',()=>{
         const element = btn.value;
         confirmEdit.value = btn.value;
         const edit = document.getElementById('edit');
         edit.classList.toggle('hidden')
-        getData(element)
+        const person = btn.dataset.person;
+        confirmEdit.setAttribute('data-person', person)
+        
+        getData(element,person)
     })
     
 })
-function getData(element)
+confirmEdit.addEventListener("click", (btn)=>{
+    const element = btn.currentTarget.value; 
+    const person = btn.currentTarget.dataset.person;
+    console.log(element,person)
+    text = nameInput.value;
+    price = priceInput.value;
+    edit(element,text,price ,person)
+    
+  })
+  
+function getData(element,person)
 {
-    fetch(`/admin/electrician/${element}`,{
+    fetch(`/admin/${person}/${element}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -71,8 +87,8 @@ function getData(element)
 }
 
 
-async function edit(element,text,price){
-   await fetch(`/admin/electrician/${element}`,{
+ function edit(element,text,price,person){
+    fetch(`/admin/${person}/${element}`,{
         method: 'PATCH',
         headers:{
             Accept: 'application/json',
@@ -83,7 +99,7 @@ async function edit(element,text,price){
         })
         
         
-    }).then(r=>r.json())
+    })
       .then(data=>{
           console.log(text,price, data);
           location.reload();
@@ -92,11 +108,4 @@ async function edit(element,text,price){
           console.log(err);
       })
 }
-confirmEdit.addEventListener("click", (btn)=>{
-  const element = btn.currentTarget.value;
-  text = nameInput.value;
-  price = priceInput.value;
-  console.log(text,price)
-  edit(element,text,price)
-  
-})
+

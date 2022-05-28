@@ -1,0 +1,51 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+h1{
+    font-size: 3rem;
+}
+form{
+    width: 50%;
+    height: 50%;
+    background-color: red;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+form input{
+    display: block;
+    margin: auto;
+}
+form input
+{
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 60%;
+    background:rgba(0,0,0,0.3);
+    transition: .3s ;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    outline: none;
+
+    
+    
+}
+form input:hover{
+    background: rgba(0, 0, 0, 0.1);
+    transition: .3s ;
+    
+    
+}
+form input::-webkit-input-placeholder{
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}

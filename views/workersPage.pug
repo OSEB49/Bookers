@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  head  
+   link(rel="stylesheet", href="../stylesheets/workers.css")
+  body
+   h1 Wybierz Wykonawce
+   form(method='post')#cont 
+    button(name="person" value="plumber").chooseWorker#plumber 
+     
+    button(name="person" value="electrician").chooseWorker#electrician 
+    
+    button(name="person" value="gardener").chooseWorker#gardener 
+     

@@ -8,11 +8,22 @@ const Service = require('../models/serviceSchema.js');
 router.get('/', function(req, res, next) {
   Service.find({'person':person}, (err,data)=>{
     
-    res.render('crudGardener', { title: 'ElektrykCRUD', data });
+    res.render('crudGardener', { title: 'Ogrodnik  CRUD', data });
   })
      
 
 });
+router.post('/', (req,res, next)=>{
+  const body = req.body.service;
+  if(req.body.service)
+  {
+    res.redirect(`/admin/${body}`);
+  }
+  else{
+    next();
+  }
+})
+
 router.post('/', async (req,res)=>{
   const body = req.body;
   try{
@@ -31,7 +42,7 @@ console.log(err)
 
 router.delete('/:id', async (req,res)=>{
   const id =  mongoose.Types.ObjectId(req.params);
-  console.log(id);
+  console.log(id)
   try{
   Service.findByIdAndDelete({'_id':id},(err,data)=>{
     console.log(err,data);
@@ -48,12 +59,11 @@ router.get('/:id', async(req,res)=>{
   try{
     Service.find({'_id': id}, (err,data)=>{
       console.log(err,data[0].nameOfService);
-      res.json({
+      return res.json({
         name: data[0].nameOfService,
         price: data[0].price
-        
       })
-      res.status(200).send();
+      
       
     })
   
@@ -66,12 +76,23 @@ router.get('/:id', async(req,res)=>{
   }
 })
 
-router.patch('/:id',  (req,res)=>{
- 
+router.patch('/:id', async (req,res)=>{
   
   const id =  mongoose.Types.ObjectId(req.params);
-  const body = req.body;
-  res.status(200).send();
+  console.log(req.body)
+    
+   try{
+    await Service.findByIdAndUpdate(req.params.id, req.body);
+    
+    res.status(200).send();
+    await Service.save();
+    
+   } 
+   catch(err)
+   {
+     console.log(err)
+   } 
+  
   
 
 })

@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  head 
+    link(rel="stylesheet", href="../stylesheets/main.css")
+  body 
+    h1 Booker.com  
+     form(method='post')
+      h1 Zarejestruj się
+      input(type="name" name="name" placeholder="Podaj Imie i Nazwisko")
+      input(type='email', name="email" placeholder="Podaj email")
+      input(type='password', name="regPassword" placeholder="Podaj haslo")
+      input(type="submit" name='confirmReg')
+
+     form(method='post')
+      h1 Zaloguj  sie
+      input(type='email', name="username" placeholder="Podaj email")
+      input(type='password', name="password" placeholder="Podaj haslo")
+      input(type="submit" name='confirmLogin')
+
