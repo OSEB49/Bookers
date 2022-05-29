@@ -34,7 +34,7 @@ function authPerson(req,res,next){
 
 }
 /* GET home page. */
-router.get('/',authPerson, function(req, res, next) {
+router.get('/', function(req, res, next) {
   Service.find({'person':person}, (err,data)=>{
     
     res.render('crudGardener', { title: 'Ogrodnik  CRUD', data });
