@@ -88,10 +88,10 @@ app.use('/workers', workersRouter);
 app.use('/plumber', plumberRouter);
 app.use('/electrician', electricianRouter);
 app.use('/gardener', gardenerRouter);
-app.use('/crudplumber', crudPlumberRouter);
-app.use('/crudelectrician', crudElectricianRouter);
-app.use('/crudgardener', crudGardenerRouter);
-app.use('/crudbooks', crudBooksRouter);
+app.use('/admin/plumber', crudPlumberRouter);
+app.use('/admin/electrician', crudElectricianRouter);
+app.use('/admin/gardener', crudGardenerRouter);
+app.use('/admin/books', crudBooksRouter);
 app.use('/worker/plumber', plumberAccountRouter);
 app.use('/worker/electrician', electricianAccountRouter);
 app.use('/worker/gardener', gardenerAccountRouter)

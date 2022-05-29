@@ -43,13 +43,13 @@ router.post('/login', passport.authenticate('local',{
   if(req.user.role==='USER'){
     res.redirect('/workers')
   }
-  else if(req.user.role==='ADMIN'){ 
-   res.redirect('/crudplumber');
-  }
   
   else if( req.user.role==='PLUMBER'){
     res.redirect('/worker/plumber')
     
+  }
+  else if(req.user.role==='ADMIN'){
+    res.redirect('/admin/plumber')
   }
   else if(req.user.role==='ELECTRICIAN'){
     res.redirect('/worker/electrician')

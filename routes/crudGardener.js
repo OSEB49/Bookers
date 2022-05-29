@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
      
 
 });
-router.post('/logout', function(req, res, next) {
+router.post('/admin/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err); }
     res.redirect('/');
@@ -26,7 +26,7 @@ router.post('/', (req,res, next)=>{
   const body = req.body.service;
   if(req.body.service)
   {
-    res.redirect(`/crud${body}`);
+    res.redirect(`/admin/${body}`);
   }
   else{
     next();

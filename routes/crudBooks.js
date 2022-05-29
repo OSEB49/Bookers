@@ -57,7 +57,7 @@ router.post('/', (req,res,)=>{
   const body = req.body.service;
   if(req.body.service)
   {
-    res.redirect(`/crud${body}`);
+    res.redirect(`/admin/${body}`);
   }
 })
 
