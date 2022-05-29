@@ -9,7 +9,9 @@ block content
 
    body.plumber
     img(src='../images/p1.png')
-    h1 Hydraulik
+    h1 Witaj, Hydrauliku
+    form(method='post' action='/logout').logoutForm
+     button(type='submit' name='logout').logout Wyloguj
     form(method="post")#add.popup
      p Dodaj Usługę
      input(type='text' placeholder="Podaj nazwe uslugi" name="nameOfService").inputs

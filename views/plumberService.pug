@@ -6,6 +6,8 @@ block content
   body.plumber 
    
     h1 Hydraulik
+    form(method='post' action='/logout')
+     button(type='submit' name='logout').logout Wyloguj
     img(src="../images/p1.png")
     form(method="post")
      each item in data

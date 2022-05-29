@@ -4,6 +4,35 @@ var router = express.Router();
 const person = 'plumber';
 const Service = require('../models/serviceSchema.js');
 
+const passport = require('passport');
+function authPerson(req,res,next){
+  User.findById(req.user,(err,data)=>{
+    console.log(data);
+  })
+  
+  
+  if(req.isAuthenticated()& req.user.role==='ADMIN')
+  {
+    next();
+  }
+  else if(req.user.role==='PLUMBER'){
+    res.redirect('/worker/plumber')
+    console.log(req.user)
+  }
+  else if(req.user.role==='ELECTRICIAN'){
+    res.redirect('/worker/electrician')
+  }
+  else if(req.user.role==='GARDENER'){
+    res.redirect('/worker/gardener')
+  }
+  else if(req.user.role==='USER'){
+    res.redirect('/workers')
+  }
+  else{
+    res.redirect('/')
+  }
+
+}
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Service.find({'person':person}, (err,data)=>{
@@ -96,5 +125,11 @@ router.patch('/:id', async (req,res)=>{
   
 
 })
+router.post('/admin/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
 
 module.exports = router;

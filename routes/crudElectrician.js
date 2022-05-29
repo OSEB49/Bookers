@@ -3,7 +3,34 @@ const { default: mongoose } = require('mongoose');
 var router = express.Router();
 const person = 'electrician';
 const Service = require('../models/serviceSchema.js');
+const passport = require('passport');
+function authPerson(req,res,next){
+  User.findById(req.user,(err,data)=>{
+    console.log(data);
+  })
+  
+ if(err.status===500){
+    res.redirect('/')
+  }
+  if(req.isAuthenticated()&& req.user.role==='ADMIN')
+  {
+    next();
+  }
+  else if(req.isAuthenticated()&& req.user.role==='PLUMBER'){
+    res.redirect('/worker/plumber')
+    console.log(req.user)
+  }
+  else if(req.isAuthenticated()&& req.user.role==='ELECTRICIAN'){
+    res.redirect('/worker/electrician')
+  }
+  else if(req.isAuthenticated()&& req.user.role==='GARDENER'){
+    res.redirect('/worker/gardener')
+  }
+  else if(req.user.role==='USER'){
+    res.redirect('/workers')
+  }
 
+}
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Service.find({'person':person}, (err,data)=>{
@@ -13,6 +40,13 @@ router.get('/', function(req, res, next) {
      
 
 });
+router.post('/admin/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
+
 router.post('/', (req,res, next)=>{
   const body = req.body.service;
   if(req.body.service)

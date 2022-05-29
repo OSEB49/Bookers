@@ -8,18 +8,19 @@ block content
    #app
      #nav 
      h1.title Booker.com  
+
      form(method='post' action='/register' )
       h1 Zarejestruj się
       input(type="name" name="name" placeholder="Podaj Imie i Nazwisko")
       input(type='email', name="email" placeholder="Podaj email")
       input(type='password', name="regPassword" placeholder="Podaj haslo")
-      input(type="submit" name='confirmReg')
+      button(type="submit" name='confirmReg') Zarejestruj
 
      form(method='post' action='/login')
       h1 Zaloguj  sie
       input(type='email', name="username" placeholder="Podaj email")
       input(type='password', name="password" placeholder="Podaj haslo")
-      input(type="submit" name='confirmLogin')
+      button(type="submit" name='confirmLogin') Zaloguj
 
      #sliderService
       h1 Potrzebujesz pomocy? Oferujemy ci usługi

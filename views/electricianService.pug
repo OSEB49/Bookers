@@ -6,8 +6,9 @@ block content
   body.electrician 
    
     h1 Elektryk 
+    form(method='post' action='/logout').logoutForm
+     button(type='submit' name='logout').logout Wyloguj
     img(src="../images/p2.png")
-   
     form(method="post")
      each item in data
       .container
@@ -18,6 +19,7 @@ block content
       input(type="text" name="name" placeholder="podaj imie")
       input(type="email" name="email" placeholder="podaj email")
       input(type="text"  name="address" placeholder="podaj adres")
+      input(type="datetime-local" name="date")
       textarea(name="information", cols="60", rows="10") 
      input(type="submit" value='Potwierdz').confirm
          

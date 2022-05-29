@@ -8,13 +8,17 @@ block content
  
 
    body.electrician
+    form(method='post' action='/logout').logoutForm
+     button(name="service" value='logout').chooseWorker Wyloguj
     #nav  
+    
      form(method='post')#cont 
       p Zmień kategorie CRUD
       button(name="service" value="plumber").chooseWorker#plumber Hydraulik
       button(name="service" value="electrician").chooseWorker#electrician Elektryk
       button(name="service" value="gardener").chooseWorker#gardener Ogrodnik
       button(name="service" value="books").chooseWorker#books Rezerwacje
+      
        
     img(src='../images/p2.png')
     h1 CRUD Books
@@ -24,6 +28,7 @@ block content
      input(type="number" placeholder="Podaj cene uslugi" class='inputs' value id="editPrice")
      input(type="datetime-local" name="date")
      button(id="editConfirm").confirmBtn Edytuj
+
     
 
     table.booksTable

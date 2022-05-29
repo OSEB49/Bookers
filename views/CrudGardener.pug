@@ -8,6 +8,8 @@ block content
  
 
    body.gardener
+    form(method='post' action='/logout').logoutForm
+     button(name="service" value='logout').chooseWorker Wyloguj
     #nav  
      form(method='post')#cont 
       p Zmień kategorie CRUD
@@ -15,6 +17,7 @@ block content
       button(name="service" value="electrician").chooseWorker#electrician Elektryk
       button(name="service" value="gardener").chooseWorker#gardener Ogrodnik
       button(name="service" value="books").chooseWorker#books Rezerwacje
+      
        
     img(src='../images/p3.png')
     h1 CRUD Ogrodnik

@@ -7,9 +7,11 @@ block content
     link(rel="stylesheet", href="../stylesheets/crud.css")
  
 
-   body.electrician
+   body.electrician 
+    form(method='post' action='/logout').logoutForm
+     button(type='submit' name='logout').logout Wyloguj
     img(src='../images/p2.png')
-    h1 CRUD Books
+    h1 Witaj, Elektryku
     form(method="post")#add.popup
      p Dodaj Usługę
      input(type='text' placeholder="Podaj nazwe uslugi" name="nameOfService").inputs

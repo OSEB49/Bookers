@@ -35,13 +35,39 @@ next();
 
 
 router.post('/login', passport.authenticate('local',{
-  successRedirect: '/workers',
   failureRedirect: '/',
   successFlash: ''
 
 }), (req,res,next)=>{
-  console.log(res);
+  console.log(req.user.role)
+  if(req.user.role==='ADMIN')
+  { 
+   res.redirect('/admin/plumber');
+  }
+  
+  else if( req.user.role==='PLUMBER'){
+    res.redirect('/worker/plumber')
+    console.log(req.user)
+  }
+  else if(req.user.role==='ELECTRICIAN'){
+    res.redirect('/worker/electrician')
+  }
+  else if(req.user.role==='GARDENER'){
+    res.redirect('/worker/gardener')
+  }
+  else if(req.user.role==='USER'){
+    res.redirect('/workers')
+  }
 })
+
+router.post('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
+
+
 
 
 

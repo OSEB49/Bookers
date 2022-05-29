@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
   
 });
 
+
 router.post('/', async (req,res)=>{
   const body = req.body;
   //const id = mongoose.Types.ObjectId(body.service);
@@ -23,6 +24,7 @@ router.post('/', async (req,res)=>{
 try{
  for(i=0; i<body.service.length; i++)
   {
+    console.log(id[i])
     Service.findOne({_id: id[i]}, (err,data)=>{
     console.log(data);
     const newBook =  new Appointment({

@@ -11,6 +11,7 @@ body{
     margin: 0;
     padding: 0;
     color: white;
+    display: flex;
 }
 .title{
     font-size: 3rem;
@@ -19,16 +20,18 @@ body{
 form{
     width: 50%;
     min-height: 50%;
-    background-color: red;
+    background: rgba(0,0,0,0.8);
     text-align: center;
     display: block;
     margin: auto;
+    flex-direction: column;
+    position: relative;
 }
 form input{
     display: block;
     margin: auto;
 }
-form input
+form input, form button
 {
     display: block;
     margin: auto;
@@ -43,6 +46,7 @@ form input
     text-align: center;
     font-size: 1.2rem;
     outline: none;
+    border: 1px solid white;
 
     
     

@@ -5,7 +5,9 @@ block content
    link(rel="stylesheet", href="../stylesheets/books.css")
   body.gardener 
    
-    h1 Ogrodnik
+    h1 
+    form(method='post' action='/logout')
+     button(type='submit' name='logout').logout Wyloguj 
     img(src="../images/p3.png")
     form(method="post")
      each item in data
