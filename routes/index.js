@@ -45,7 +45,7 @@ router.post('/login', passport.authenticate('local',{
   }
   else if(req.user.role==='ADMIN')
   { 
-   res.redirect('/admin/gardener');
+   res.redirect('/crudplumber');
    
   }
   

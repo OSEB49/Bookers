@@ -51,7 +51,7 @@ router.post('/', (req,res, next)=>{
   const body = req.body.service;
   if(req.body.service)
   {
-    res.redirect(`/admin/${body}`);
+    res.redirect(`/crud${body}`);
   }
   else{
     next();
@@ -67,7 +67,7 @@ router.post('/', async (req,res)=>{
     price: body.priceOfService
   })
   newService.save();
-  res.redirect(`/admin/${person}`);
+  res.redirect(`/crud${body}`);
 }
 catch(err){
 console.log(err)

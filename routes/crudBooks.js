@@ -38,7 +38,7 @@ function authPerson(req,res,next){
 }
 
 /* GET home page. */
-router.get('/', authPerson, function(req, res, next) {
+router.get('/', function(req, res, next) {
   Appointment.find({}, (err,data)=>{
     
     res.render('crudBooks', { title: 'ZAMOWIENIA CRUD', data });
@@ -57,7 +57,7 @@ router.post('/', (req,res,)=>{
   const body = req.body.service;
   if(req.body.service)
   {
-    res.redirect(`/admin/${body}`);
+    res.redirect(`/crud${body}`);
   }
 })
 
