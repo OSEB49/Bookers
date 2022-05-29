@@ -40,7 +40,10 @@ router.post('/login', passport.authenticate('local',{
 
 }), (req,res,next)=>{
   console.log(req.user.role)
-  if(req.user.role==='ADMIN')
+  if(req.user.role==='USER'){
+    res.redirect('/workers')
+  }
+  else if(req.user.role==='ADMIN')
   { 
    res.redirect('/admin/gardener');
    

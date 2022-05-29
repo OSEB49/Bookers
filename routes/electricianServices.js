@@ -22,8 +22,8 @@ router.post('/', async (req,res)=>{
   const id = body.service
 
 try{
- for(i=0; i<body.service.length; i++)
-  {
+ for(i=0; i<=body.service.length; i++)
+  { 
     console.log(id[i])
     Service.findOne({_id: id[i]}, (err,data)=>{
     console.log(data);
