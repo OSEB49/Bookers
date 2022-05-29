@@ -42,3 +42,17 @@ let j;
  slider();
 
  setInterval(slider,2000);
+
+ const registerForm = document.querySelector('#register');
+ const loginForm = document.querySelector('#login');
+ const registerShowButton = document.querySelector('.registerOn');
+ const loginShowButton = document.querySelector('.loginOn');
+
+ registerShowButton.addEventListener('click', ()=>{
+    loginForm.classList.add('hidden'); 
+     registerForm.classList.toggle('hidden');
+ })
+ loginShowButton.addEventListener('click', ()=>{
+    registerForm.classList.add('hidden');
+    loginForm.classList.toggle('hidden');
+})
