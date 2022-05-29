@@ -1,15 +1,24 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    color: white;
 }
-h1{
+.title{
     font-size: 3rem;
+    text-align: center;
 }
 form{
     width: 50%;
-    height: 50%;
+    min-height: 50%;
     background-color: red;
     text-align: center;
     display: block;
@@ -49,3 +58,62 @@ form input::-webkit-input-placeholder{
     text-align: center;
     font-size: 1.2rem;
 }
+.hidden
+{
+    display: none;
+}
+#sliderService{
+    width: 60%;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: block;
+    margin: auto;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    -webkit-box-shadow: 0px 0px 86px 42px rgba(66, 68, 90, 1);
+-moz-box-shadow: 0px 0px 86px 42px rgba(66, 68, 90, 1);
+box-shadow: 0px 0px 86px 42px rgba(66, 68, 90, 1);
+}
+#sliderService h1,h2{
+    padding: 20px;
+    transition: .3s ease all;
+}
+h2{
+    font-size: 3rem;
+}
+img{
+    width: 30%;
+    height: 45%;
+    transition: .3s ease all;
+}
+li{
+    list-style-type: none;
+    font-size: 1.7rem;
+    padding: 15px;
+    transition: .3s ease all;
+    margin-top: 20px;
+}
+#app{
+    width: 100%;
+    height: 100%;
+}
+.slider0{
+   background-image: url(../images/slider1.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+   transition: .3s ease all;
+   
+}
+.slider1{
+    background-image: url(../images/slider2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: .3s ease all;
+ }
+ .slider2{
+    background-image: url(../images/slider3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: .3s ease all;
+ }

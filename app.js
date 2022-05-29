@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var mongoose = require('mongoose')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -9,15 +10,7 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 //const flash = require('express-flash');
 const session = require('express-session');
-var mongoose = require('mongoose');
-
-//const MongoStore = require('connect-mongo') (session);
-
-
-
-
-
-
+const MongoStore = require('connect-mongo') (session);
 
 
 var config = require('./config');
@@ -56,7 +49,6 @@ var gardenerAccountRouter = require('./routes/gardenerDashboard');
 const { MongoGridFSChunkError } = require('mongodb');
 const req = require('express/lib/request');
 
-
 var app = express();
 
 // view engine setup
@@ -69,20 +61,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const sessionStore = new MongoStore({mongooseConnection: mongoose.connection, collection:'session'})
 //app.use(flash());
 app.use(session({
-  cookie: {maxAge:60000},
   secret: 'SECRET',
   resave: false,
   saveUninitialized: true,
+  store: sessionStore,
+  cookie: {
+    maxAge:1000*60*60*24
+  },
 }));
-
+require('./passport-config');
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req,res,next)=>{
   console.log(req.session);
-  console.log(req.user);
   next();
 })
 //app.use(passport.authenticate('session'));
