@@ -45,7 +45,7 @@ router.post('/login', passport.authenticate('local',{
   }
   else if(req.user.role==='ADMIN')
   { 
-   res.redirect('/crudplumber');
+   res.redirect('https://bookerapppg.herokuapp.com/crudplumber');
    
   }
   
