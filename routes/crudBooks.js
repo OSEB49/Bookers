@@ -65,7 +65,7 @@ router.delete('/:id', async (req,res)=>{
   const id =  mongoose.Types.ObjectId(req.params);
   console.log(id)
   try{
-  Service.findByIdAndDelete({'_id':id},(err,data)=>{
+  Appointment.findByIdAndDelete({'_id':id},(err,data)=>{
     console.log(err,data);
     res.status(200).send();
   })
