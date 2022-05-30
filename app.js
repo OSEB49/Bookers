@@ -11,6 +11,7 @@ const localStrategy = require('passport-local').Strategy;
 //const flash = require('express-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo') (session);
+require('dotenv').config()
 
 
 var config = require('./config');
@@ -65,7 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const sessionStore = new MongoStore({mongooseConnection: mongoose.connection, collection:'session'})
 //app.use(flash());
 app.use(session({
-  secret: 'SECRET',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   store: sessionStore,
