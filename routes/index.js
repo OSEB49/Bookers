@@ -49,16 +49,13 @@ router.post('/login', passport.authenticate('local',{
     
   }
   else if(req.user.role==='ADMIN'){
-    res.redirect('/admin/plumber')
+    res.redirect('/admin/electrician')
   }
   else if(req.user.role==='ELECTRICIAN'){
     res.redirect('/worker/electrician')
   }
   else if(req.user.role==='GARDENER'){
     res.redirect('/worker/gardener')
-  }
-  else if(req.user.role==='USER'){
-    res.redirect('/workers')
   }
 })
 
