@@ -8,37 +8,45 @@ const Appointment = require('../models/appointmentSchema')
 const User = require('../models/userSchema');
 
 const passport = require('passport');
-function authPerson(req,res,next){
-  User.findById(req.user,(err,data)=>{
-    console.log(data);
-  })
-  
-  
-  if(req.isAuthenticated()& req.user.role==='ADMIN')
-  {
-    next();
-  }
-  else if(req.user.role==='PLUMBER'){
-    res.redirect('/worker/plumber')
-    console.log(req.user)
-  }
-  else if(req.user.role==='ELECTRICIAN'){
-    res.redirect('/worker/electrician')
-  }
-  else if(req.user.role==='GARDENER'){
-    res.redirect('/worker/gardener')
-  }
-  else if(req.user.role==='USER'){
-    res.redirect('/workers')
-  }
-  else{
-    res.redirect('/')
-  }
 
+function authUser(req,res,next)
+{
+  const user = req.user;
+   switch(user.role)
+   {
+     case 'USER':
+       console.log('USER');
+       res.redirect('/workers');
+       break;
+
+     case 'ADMIN':
+       console.log('ADMIN');
+       return next();
+       break;
+
+     case 'PLUMBER':
+      console.log('PLUMBER');
+      res.redirect('/worker/plumber');
+      break;    
+      
+      case 'ELECTRICIAN':
+        console.log('ELECTRICIAN');
+        res.redirect('/worker/electrician');
+        break;      
+    
+      case 'GARDENER':
+       console.log('GARDENER');
+        res.redirect('/worker/gardener');
+        break;   
+         
+      default:
+        console.log('brak sesji');
+        res.redirect('/');
+   }
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', authUser, function(req, res, next) {
   Appointment.find({}, (err,data)=>{
     
     res.render('crudBooks', { title: 'ZAMOWIENIA CRUD', data });

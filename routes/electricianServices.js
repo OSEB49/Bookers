@@ -6,12 +6,31 @@ const mongoose = require('mongoose');
 const Appointment = require('../models/appointmentSchema');
 const person = 'electrician';
 
+
+
+
+function isSession(req,res,next)
+
+{
+  const user = req.user;
+ 
+  if(user){
+    console.log('sessions is active', req.user)
+    return next()
+  }
+  else{
+    console.log('session is failed')
+    res.redirect('/')
+  }
+}
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', isSession, function(req, res, next) {
   Service.find({'person':person}, (err,data)=>{
-    res.render('electricianService', { title: 'Elektryk', data });
+    res.render('electricianService', { title: 'Elektryk', data});
   })
-  
+   if(user){
+     console.log(true);
+   }
 });
 
 
@@ -20,7 +39,7 @@ router.post('/', async (req,res)=>{
   //const id = mongoose.Types.ObjectId(body.service);
   const checkboxLength = body.service.length;
   const id = body.service
-
+  const user = req.user;
 try{
  for(i=0; i<=body.service.length; i++)
   { 
@@ -29,9 +48,9 @@ try{
     console.log(data);
     const newBook =  new Appointment({
       person: person,
-      username: body.name,
+      username: user.name || body.name,
       nameService: data.nameOfService,
-      email: body.email,
+      email: user.email || body.email,
       address: body.address,
       date: body.date,
       price: data.price,
@@ -50,5 +69,7 @@ catch(err)
   console.log(err);
 }
 })
+
+
 
 module.exports = router;

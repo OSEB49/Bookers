@@ -6,8 +6,44 @@ const person = 'gardener';
 const Appointment = require('../models/appointmentSchema')
 const Service = require('../models/serviceSchema')
 
+function authUser(req,res,next)
+{
+  const user = req.user;
+   switch(user.role)
+   {
+     case 'USER':
+       console.log('USER');
+       res.redirect('/workers');
+       break;
+
+     case 'ADMIN':
+       console.log('ADMIN');
+       res.redirect('/admin/plumber')
+       break;
+
+     case 'PLUMBER':
+      console.log('PLUMBER');
+      res.redirect('/worker/plumber');
+      break;    
+      
+      case 'ELECTRICIAN':
+        console.log('ELECTRICIAN');
+        res.redirect('/worker/electrician');
+        break;      
+    
+      case 'GARDENER':
+       console.log('GARDENER');
+        return next();
+        break;   
+         
+      default:
+        console.log('brak sesji');
+        res.redirect('/');
+   }
+}
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', authUser, function(req, res, next) {
   Appointment.find({person:person}, (err,data)=>{
     Service.find({person:person},(err,services)=>{
       res.render('gardenerDashboard', { title: 'Ogrodnik - Panel Wykonawcy', data,services});

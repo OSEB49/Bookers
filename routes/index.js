@@ -13,8 +13,6 @@ router.get('/', function(req, res, next) {
 router.post('/register', async (req,res,next)=>{
   const body = req.body;
   const hashedPassword = await bcrypt.hash(body.regPassword, 10);
-    if(req.body.confirmReg)
-    {
       try{
     const addUsers = new User({
       name: body.name,
@@ -22,6 +20,7 @@ router.post('/register', async (req,res,next)=>{
       password: hashedPassword
     })
     addUsers.save();
+    console.log('work')
     res.redirect('/workers')
   }
 
@@ -29,8 +28,7 @@ router.post('/register', async (req,res,next)=>{
   {
    console.log(err);
   }
-}
-next();
+
 })
 
 
@@ -40,6 +38,7 @@ router.post('/login', passport.authenticate('local',{
 
 }), (req,res,next)=>{
   console.log(req.user.role)
+  console.log('dziala')
   if(req.user.role==='USER'){
     res.redirect('/workers')
   }
@@ -49,7 +48,7 @@ router.post('/login', passport.authenticate('local',{
     
   }
   else if(req.user.role==='ADMIN'){
-    res.redirect('/admin/electrician')
+    res.redirect('/admin/plumber')
   }
   else if(req.user.role==='ELECTRICIAN'){
     res.redirect('/worker/electrician')

@@ -108,4 +108,5 @@ function getData(element,person)
           console.log(err);
       })
 }
-
+const username = document.querySelector('.name');
+const email = document.querySelector('.email');
