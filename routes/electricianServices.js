@@ -6,9 +6,6 @@ const mongoose = require('mongoose');
 const Appointment = require('../models/appointmentSchema');
 const person = 'electrician';
 
-
-
-
 function isSession(req,res,next)
 
 {
@@ -23,27 +20,25 @@ function isSession(req,res,next)
     res.redirect('/')
   }
 }
+
 /* GET home page. */
 router.get('/', isSession, function(req, res, next) {
   Service.find({'person':person}, (err,data)=>{
-    res.render('electricianService', { title: 'Elektryk', data});
+    res.render('electricianService', { title: 'Elektryk', data });
   })
-   if(user){
-     console.log(true);
-   }
+  
 });
-
 
 router.post('/', async (req,res)=>{
   const body = req.body;
   //const id = mongoose.Types.ObjectId(body.service);
   const checkboxLength = body.service.length;
-  const id = body.service
+  const id = body.service;
   const user = req.user;
+
 try{
- for(i=0; i<=body.service.length; i++)
-  { 
-    console.log(id[i])
+ for(i=0; i<body.service.length; i++)
+  {
     Service.findOne({_id: id[i]}, (err,data)=>{
     console.log(data);
     const newBook =  new Appointment({
@@ -69,7 +64,5 @@ catch(err)
   console.log(err);
 }
 })
-
-
 
 module.exports = router;
