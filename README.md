@@ -1,7 +1,7 @@
 # Bookers
 
 //OTWÓRZ APLIKACJĘ NA VPS'IE(!!!PRZECZYTAJ README DO KOŃCA, JESLI CHCESZ KORZYSTAC Z APLIKACJI Z POZIOMU PRZEGLADARKI!!!)
- https://dashboard.heroku.com/apps/bookeers
+ https://bookeers.herokuapp.com/
 //INSTALACJA APLIKACJI NA LOCALHOSCIE                                                                     
 -POSIADAC WERSJE NODE.JS 16.0+
 (jeśli nie posiadasz NODE'a, mozesz go pobrać tutaj: https://nodejs.org/en/ )
