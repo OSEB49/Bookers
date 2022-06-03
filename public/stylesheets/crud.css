@@ -21,7 +21,7 @@ background-image : linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 }
 h1{
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     color: white;
 }
 img{
@@ -44,6 +44,8 @@ img{
 }
 #add{
     left: 2%;
+    width: 30%;
+    height: 42%;
 }
 #edit{
     right: 2%;
@@ -92,6 +94,7 @@ table{
     font-size: 1.5rem;
     background: rgba(0, 0, 0, 0.3);
     color: white;
+    
     
     
 }
@@ -210,20 +213,25 @@ tr{
     float: right;
     font-size: 1.1rem;
     text-align: center;
+
 }
 .dashboardTable, .serviceTable
 { 
     width: 100%;
     position: relative;
-    top:-15%;
+    top:-5%;
     margin-top: 10%;
+
     
 }
 .logoutForm{
     width: 120px;
     height: 50px;
     float: right;
-    background: transparent
+    background: transparent;
+    position:absolute;
+    right: 1%;
+    top: 1%;
 }
 .logoutForm button
 {
@@ -239,5 +247,6 @@ tr{
     background: rgba(0, 0, 0, 0.3);
     transition: .5s ease;
     color: white;
+    
 
 }

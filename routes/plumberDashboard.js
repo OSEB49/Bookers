@@ -44,6 +44,7 @@ function authUser(req,res,next)
 
 /* GET home page. */
 router.get('/', authUser, function(req, res, next) {
+
   Appointment.find({person:person}, (err,data)=>{
     Service.find({person:person},(err,services)=>{
       res.render('plumberDashboard', { title: 'Hydraulik - Panel Wykonawcy', data,services});
