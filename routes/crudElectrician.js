@@ -121,13 +121,32 @@ router.get('/:id', async(req,res)=>{
   }
 })
 
-router.patch('/:id',  (req,res)=>{
+router.patch('/:id', async (req,res)=>{
+  
   const id =  mongoose.Types.ObjectId(req.params);
-  const body = req.body;
-  console.log(id,body);
-  res.status(200).send();
+  console.log(req.body)
+    
+   try{
+    await Service.findByIdAndUpdate(
+      {_id: req.params.id},
+      {
+      price: req.body.price,
+      nameOfService: req.body.name
+    }
+      
+      
+      );
+    
+    res.status(200).send();
+    await Service.save();
+    
+   } 
+   catch(err)
+   {
+     console.log(err)
+   } 
+  
   
 
 })
-
 module.exports = router;

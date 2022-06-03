@@ -32,37 +32,55 @@ router.get('/', isSession, function(req, res, next) {
 router.post('/', async (req,res)=>{
   const body = req.body;
   //const id = mongoose.Types.ObjectId(body.service);
-  const checkboxLength = body.service.length;
-  const id = body.service
+  console.log(body.service.length, body.service)
+try{  
   const user = req.user;
-  try{
-   for(i=0; i<=body.service.length; i++)
-    { 
-      console.log(id[i])
-      Service.findOne({_id: id[i]}, (err,data)=>{
-      console.log(data);
-      const newBook =  new Appointment({
-        person: person,
-        username: user.name || body.name,
-        nameService: data.nameOfService,
-        email: user.email || body.email,
-        address: body.address,
-        date: body.date,
-        price: data.price,
-        info: body.information
-      })
-      newBook.save();
-      
-      })
-      
-      res.redirect(`/${person}`)
-    }
+  if(body.service.length===24)
+{ 
+  const id = []
+  id.push(body.service)
+  Service.findOne({_id: id}, (err,data)=>{
+    const newBook =  new Appointment({
+      person: person,
+      username: user.name || body.name,
+      nameService: data.nameOfService,
+      email: user.email || body.email,
+      address: body.address,
+      date: body.date,
+      price: data.price,
+      info: body.information  
+    })
+    newBook.save();
     
-  }
-  catch(err)
-  {
-    console.log(err);
-  }
+    
   })
-  
+  res.redirect(`/${person}`)
+}
+else{
+  for(i=0; i<body.service.length; i++)
+  { 
+   console.log(body.service[i])
+   Service.findOne({_id: body.service[i]}, (err,data)=>{
+    const newBook =  new Appointment({
+      person: person,
+      username: user.name || body.name,
+      nameService: data.nameOfService,
+      email: user.email || body.email,
+      address: body.address,
+      date: body.date,
+      price: data.price,
+      info: body.information  
+    })
+    newBook.save();
+    
+    
+  })}}
+
+  res.redirect(`/${person}`)
+}
+catch(err)
+{
+  console.log(err);
+}
+})
 module.exports = router;

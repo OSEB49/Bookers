@@ -118,7 +118,15 @@ router.patch('/:id', async (req,res)=>{
   console.log(req.body)
     
    try{
-    await Service.findByIdAndUpdate(req.params.id, req.body);
+    await Service.findByIdAndUpdate(
+      {_id: req.params.id},
+      {
+      price: req.body.price,
+      nameOfService: req.body.name
+    }
+      
+      
+      );
     
     res.status(200).send();
     await Service.save();

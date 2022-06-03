@@ -14,6 +14,8 @@ const MongoStore = require('connect-mongo') (session);
 require('dotenv').config()
 
 
+
+
 var config = require('./config');
 
 
@@ -79,7 +81,6 @@ require('./passport-config');
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req,res,next)=>{
-  console.log(req.user)
   next();
 })
 
