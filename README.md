@@ -11,30 +11,30 @@
 - OTWORZYC TERMINAl (Ctrl+Shift+~)                                                                   
 
 -WPISAC W TERMINALU 
- npm install
+   npm install
 
 -PO ZAINSTALOWANIU MODUŁÓW(NPM) NALEZY WPROWADZIĆ KOMENDE W TERMINALU
 
-nodemon ./bin/www
+   nodemon ./bin/www
 
 LUB
 
-node ./bin/www
+   node ./bin/www
 
 -PO WYKONANIU TYCH CZYNNOSCI APLIKACJA JEST DOSTĘPNA POD ADRESEM
- localhost:3000
+   localhost:3000
 
 //JAK KORZYSTAĆ Z APLIKACJI?
 
 -ABY ZAMÓWIĆ USLUGĘ:
--zarejestruj się
+ -zarejestruj się
 
-lub w wersji demonstracyjnej:
+ lub w wersji demonstracyjnej:
 
--zaloguj się uzywając:
+ -zaloguj się uzywając:
 
-email: user@user.com
-password: user
+   email: user@user.com
+   password: user
 
 -ADMIN DASHBOARD (!!!NIE DZIALA NA HOSTINGU!!!)
   
