@@ -1,3 +1,7 @@
+Note: find bandicam Bookers.zip file to watch page to page website video. 
+
+
+
 # Bookers
 
 //OTWÓRZ APLIKACJĘ NA VPS'IE(!!!PRZECZYTAJ README DO KOŃCA, JESLI CHCESZ KORZYSTAC Z APLIKACJI Z POZIOMU PRZEGLADARKI!!!)
